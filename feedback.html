@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.input-group textarea {
+    resize: vertical;
+}
+
+.submit-container {
+    text-align: center;
+}
+
+.submit-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-container button:hover {
+    background-color: #45a049;
+}
+
+#response-message {
+    text-align: center;
+    margin-top: 20px;
+}
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Feedback Form</h2>
+        <form id="feedback-form">
+            <div class="input-group">
+                <label for="name">Full Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="message">Feedback:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <div class="submit-container">
+                <button type="submit">Submit Feedback</button>
+            </div>
+        </form>
+        <div id="response-message"></div>
+    </div>
+
+    <script>
+        document.getElementById("feedback-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("message").value;
+
+            const feedbackData = {
+                name: name,
+                email: email,
+                message: message
+            };
+
+            // Simulate sending email
+            setTimeout(function() {
+                document.getElementById("response-message").innerText = "Thank you for your feedback!";
+                document.getElementById("response-message").style.color = "green";
+                document.getElementById("feedback-form").reset();
+            }, 1000);
+            
+            // In real implementation, you would use an API or server-side method to send the email
+        });
+    </script>
+</body>
+</html>
